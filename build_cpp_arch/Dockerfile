@@ -12,3 +12,9 @@ RUN pacman-key --refresh-keys && \
   pacman-db-upgrade && \
   pacman --sync --sysupgrade --noconfirm --noprogressbar --quiet && \
   pacman --sync --noconfirm --noprogressbar --quiet base-devel git namcap
+
+RUN useradd --create-home --comment "Arch Build User" builduser
+ENV HOME /home/builduser
+
+USER builduser
+
